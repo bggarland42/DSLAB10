@@ -1,3 +1,6 @@
+#if !defined (SORTEDLISTDOUBLYLINKED_H)
+#define SORTEDLISTDOUBLYLINKED_H
+
 #include "ListDoublyLinkedIterator.h"
 #include "Text.h"
 using CSC2110::String;

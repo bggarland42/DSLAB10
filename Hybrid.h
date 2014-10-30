@@ -47,25 +47,30 @@ Hybrid<T>::~Hybrid()
 template < class T >
 bool Hybrid<T>::isEmpty()
 {
-
+   return q -> isEmpty();
 }
 
 template < class T >
 void Hybrid<T>::enqueue(T* item)
 {
-
+   q -> enqueue(item);
+   sldl -> add(item);
 }
 
 template < class T >
 T* Hybrid<T>::dequeue()
 {
+   T* temp = q -> dequeue();
+   sldl -> remove(temp -> getKey());
 
+   return temp;
 }
 
 template < class T >
 ListDoublyLinkedIterator<T>* Hybrid<T>::iterator()
 {
-
+   ListDoublyLinkedIterator <T>* iter = sldl -> iterator();
+   return iter; 
 }
 
 #endif

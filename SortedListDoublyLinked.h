@@ -75,24 +75,24 @@ T* SortedListDoublyLinked<T>::remove(DoubleNode<T>* curr)
    //DO THIS (prev == NULL / after == NULL are special cases)
    //remember to set loc
 
-   T* item;
+   T* item = curr -> getItem();
 
-   DoubleNode<T>* prev;
-   DoubleNode<T>* after;
+   DoubleNode<T>* prev = curr -> getPrev();
+   DoubleNode<T>* after = curr -> getNext();
 
+   //if sze == 1????????????????
 
+   if (sze == 0) return item;
 
+   if (prev == NULL)
+   {
+      loc = after;
+   }
 
-
-
-
-
-
-
-
-
-
-
+   if (after == NULL)
+   {
+      loc = prev;
+   }
 
    sze--;
    delete curr;

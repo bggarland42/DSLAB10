@@ -18,7 +18,7 @@ void addCDs(ListArray<CD>* list, Hybrid<CD>* h)
    while(iter->hasNext())
    {
       CD* cd = iter->next();
-      //h->enqueue(cd);
+      h->enqueue(cd);
    }
 
    delete iter;
@@ -39,7 +39,7 @@ void deleteCDs(ListArray<CD>* list)
 
 int main()
 {
-   /*ListArray<CD>* cds = CD::readCDs("cds.txt");
+   ListArray<CD>* cds = CD::readCDs("cds.txt");
 
    Hybrid<CD>* h = new Hybrid<CD>(&CD::compare_items, &CD::compare_keys);
    addCDs(cds, h);
@@ -52,15 +52,19 @@ int main()
    }
    delete iter;
 
+   cout << "in the middle" << endl;
+
    while(!(h->isEmpty()))
    {
       CD* cd = h->dequeue();
       cd->displayCD();
    }
+ cout << "before delete" << endl;
    delete h;
+  cout << "post middle" << endl;
 
    deleteCDs(cds);
    delete cds;
-   return 0;*/
+   return 0;
 }
 

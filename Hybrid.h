@@ -4,6 +4,8 @@
 #include "QueueLinked.h"
 using CSC2110::QueueLinked;
 #include "SortedListDoublyLinked.h"
+#include <iostream>
+using namespace std;
 
 template < class T >
 class Hybrid
@@ -47,6 +49,7 @@ Hybrid<T>::~Hybrid()
 template < class T >
 bool Hybrid<T>::isEmpty()
 {
+   return q->isEmpty();
 
 }
 
@@ -54,18 +57,35 @@ template < class T >
 void Hybrid<T>::enqueue(T* item)
 {
 
+   q->enqueue(item);
+   sldl->add(item);
+
 }
 
 template < class T >
 T* Hybrid<T>::dequeue()
 {
+  cout << "before temp is dequeued" << endl;
+   T* temp = q->dequeue();
+ cout << "between dequeue and sldl remove" << endl;
+   sldl->remove(temp->getKey());
+
+ cout << "before temp is returned" << endl;
+   return temp;
 
 }
 
 template < class T >
 ListDoublyLinkedIterator<T>* Hybrid<T>::iterator()
 {
+  ListDoublyLinkedIterator <T>* iter = sldl->iterator(); 
 
+  return iter;
 }
 
 #endif
+
+
+
+
+

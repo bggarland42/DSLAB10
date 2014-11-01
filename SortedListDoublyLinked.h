@@ -117,8 +117,8 @@ T* SortedListDoublyLinked<T>::remove(DoubleNode<T>* curr)
    prev->setNext(after);
    after->setPrev(prev);
   cout << "after setNext" << endl;
-  curr = NULL;
 
+  curr = NULL;
    sze--;
   cout << "just before delete curr" << endl;
    delete curr;

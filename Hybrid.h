@@ -72,7 +72,6 @@ T* Hybrid<T>::dequeue()
 
  cout << "before temp is returned" << endl;
    return temp;
-
 }
 
 template < class T >

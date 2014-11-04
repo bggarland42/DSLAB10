@@ -20,9 +20,6 @@ class SortedListDoublyLinked
       DoubleNode<T>* locateNodeRemove(String* sk);
       DoubleNode<T>* locateNodeAdd(T* item);
 
-      DoubleNode<T>* addDN(T* item);
-      T* remove(DoubleNode<T>* curr);
-
       DoubleNode<T>* findHead();
       DoubleNode<T>* findTail();
 
@@ -32,6 +29,9 @@ class SortedListDoublyLinked
    public:
       SortedListDoublyLinked(int (*comp_items) (T* item_1, T* item_2), int (*comp_keys) (String* key, T* item));
       ~SortedListDoublyLinked();
+
+      DoubleNode<T>* addDN(T* item);
+      T* remove(DoubleNode<T>* curr);
 
       bool isEmpty();
       int size();
@@ -67,7 +67,7 @@ void SortedListDoublyLinked<T>::remove(String* sk)
 {
    //identify the node to be removed
    DoubleNode<T>* curr = locateNodeRemove(sk);
-  cout << "before remove(curr)" << endl;
+  //cout << "before remove(curr)" << endl;
    remove(curr);
 }
 
@@ -78,51 +78,43 @@ T* SortedListDoublyLinked<T>::remove(DoubleNode<T>* curr)
    //DO THIS (prev == NULL / after == NULL are special cases)
    //remember to set loc
 
-  cout << "before getItem" << endl;
    T* item = curr->getItem();
-  cout << "after getItem" << endl;
 
    DoubleNode<T>* prev = curr->getPrev();
    DoubleNode<T>* after = curr->getNext();
 
-  cout << "before special cases" << endl;
-
    if(sze == 1)
-    {
+   {
       loc = NULL;
       return item;
      
-      }
+   }
+
    if(prev == NULL)   
-    {
-     cout << "prev" << endl;
+   {
       loc = after;
       after->setPrev(prev);
       sze--;
       delete curr;
-      return item;
-      
-     }
+      return item; 
+   }
+
    if(after ==  NULL)
-    {
-    cout << "after" << endl;
+   {
       loc = prev;
       prev->setNext(after);
       sze--;
       delete curr;
       return item;
-      }
+   }
 
-  cout << "before setNext" << endl;
    prev->setNext(after);
    after->setPrev(prev);
-  cout << "after setNext" << endl;
 
-  curr = NULL;
+   curr = NULL;
    sze--;
-  cout << "just before delete curr" << endl;
+
    delete curr;
-   cout << "after delete curr" << endl;
    return item;
 }
 
@@ -295,6 +287,7 @@ DoubleNode<T>* SortedListDoublyLinked<T>::addDN(T* item)
    sze++;
    return node;
 }  
+
 
 template < class T >
 void SortedListDoublyLinked<T>::removeAll() 

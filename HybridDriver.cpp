@@ -45,23 +45,20 @@ int main()
    addCDs(cds, h);
 
    ListDoublyLinkedIterator<CD>* iter = h->iterator();
-   while(iter->hasNext())
+   /*while(iter->hasNext())
    {
       CD* cd = iter->next();
       cd->displayCD();
-   }
+   }*/
    delete iter;
-
-   cout << "in the middle" << endl;
 
    while(!(h->isEmpty()))
    {
       CD* cd = h->dequeue();
       cd->displayCD();
    }
- cout << "before delete" << endl;
+
    delete h;
-  cout << "post middle" << endl;
 
    deleteCDs(cds);
    delete cds;
